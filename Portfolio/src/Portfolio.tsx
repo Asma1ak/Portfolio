@@ -73,6 +73,7 @@ const PROJECTS = [
     tech: ["HTML", "CSS", "JavaScript"],
     accent: "#C8772A",
     github: "https://github.com/Asma1ak",
+    demo: "/ember-and-oak.html",
   },
   {
     name: "Nocturne",
@@ -82,6 +83,7 @@ const PROJECTS = [
     tech: ["HTML", "CSS", "JavaScript"],
     accent: "#B8973A",
     github: "https://github.com/Asma1ak",
+    demo: "/nocturne.html",
   },
 ];
 
@@ -372,7 +374,23 @@ export default function Portfolio() {
                 </div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 600, fontSize: "1.3rem", color: "#1c1c1c", marginBottom: 12 }}>{p.name}</h3>
                 <p style={{ fontSize: "0.88rem", fontWeight: 300, lineHeight: 1.75, color: "#666", marginBottom: 20 }}>{p.description}</p>
-                <div>{p.tech.map(t => <span key={t} className="tech-tag">{t}</span>)}</div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+                  <div>{p.tech.map(t => <span key={t} className="tech-tag">{t}</span>)}</div>
+                  {p.demo && (
+                    <a href={p.demo} target="_blank" rel="noopener noreferrer" style={{
+                      display: "inline-flex", alignItems: "center", gap: 6,
+                      fontSize: "0.72rem", fontWeight: 500, letterSpacing: "0.08em",
+                      textTransform: "uppercase", color: p.accent, textDecoration: "none",
+                      borderBottom: `1px solid ${p.accent}`, paddingBottom: 1,
+                      transition: "opacity 0.2s",
+                    }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = "0.7"}
+                    onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
+                      Live Preview
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                  )}
+                </div>
               </div>
             </FadeIn>
           ))}
