@@ -1,20 +1,10 @@
 {
-  "buildCommand": "vite build",
+  "buildCommand": "vite build && cp public/ember-and-oak.html dist/ember-and-oak.html && cp public/nocturne.html dist/nocturne.html",
   "outputDirectory": "dist",
   "framework": "vite",
   "functions": {
     "api/contact.js": {
       "runtime": "nodejs20.x"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/((?!.*\\.).*)",
-      "destination": "/index.html"
-    }
-  ]
+  }
 }
